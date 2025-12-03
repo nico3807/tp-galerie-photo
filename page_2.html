@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP Lychee - 2. Installation et Configuration Serveur</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>2. 🔒 Installation et Configuration Serveur</h1>
+        <p>
+          Cette section couvre le déploiement de Lychee et la configuration des
+          droits d'écriture et des limites du serveur.
+        </p>
+      </header>
+
+      <hr />
+
+      <section id="deployment">
+        <h2>2.1 Transfert et Droits d'accès (CHMOD)</h2>
+        <ol>
+          <li><strong>Transfert FTP :</strong> Décompresser l'archive "Release" de Lychee et
+            transférer les fichiers à la racine d'un dossier dédié (ex:
+            `/public_html/portfolio` ou via un sous-domaine).
+          </li>
+          <li><strong>Droits d'accès (CHMOD) :</strong> Lychee a besoin d'écrire des données.
+            Identifier les dossiers <em>public/uploads</em>, <em>public/dist</em> et
+            <em>storage</em>. Appliquer les permissions nécessaires (généralement
+            755 ou 775 selon l'hébergeur).
+          </li>
+          <li>
+            <strong>Q3 :</strong> Pourquoi est-il risqué de mettre des droits
+            <strong>777</strong>
+            (écriture totale) sur un dossier, même si cela "règle" les problèmes
+            d'installation ?
+          </li>
+        </ol>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Risque Sécurité CHMOD 777 (Q3)
+          </button>
+          <div class="code-content">
+            <p>
+              <strong>Rappel :</strong> <em>777</em> signifie que <strong>tout le monde</strong> (Propriétaire,
+              Groupe, et Autres/Internet) a le droit de lire, écrire et
+              exécuter.
+            </p>
+            <p>
+              <strong>Réflexion :</strong> Si un attaquant parvient à téléverser un fichier
+              malveillant (script PHP) dans un dossier en 777, le serveur pourra
+              l'exécuter.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="config-php">
+        <h2>2.2 Configuration PHP (Upload et Exécution)</h2>
+        <p>
+          Par défaut, les serveurs limitent l'envoi de fichiers (souvent 2Mo).
+          Vous devez modifier ces limites.
+        </p>
+        <ol start="4">
+          <li>
+            Créer ou modifier le fichier <strong>`.htaccess`</strong> ou <strong>`.user.ini`</strong> à la
+            racine.
+          </li>
+          <li>
+            Augmenter les directives <em>upload_max_filesize</em> et
+            <em>post_max_size</em> à au moins <strong>64M</strong>.
+          </li>
+          <li>
+            Augmenter le <em>max_execution_time</em> si nécessaire (pour les gros
+            imports).
+          </li>
+        </ol>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Directives .htaccess / .user.ini
+          </button>
+          <div class="code-content">
+            <p>
+              Les directives PHP à ajouter dans votre fichier de configuration :
+            </p>
+            <pre><code>php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value max_execution_time 300</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="assisted-install">
+        <h2>2.3 Installation Assistée et Debugging</h2>
+        <ol start="7">
+          <li>
+            Lancer l'URL de votre dossier dans le navigateur. Suivre la
+            procédure d'installation, renseigner les infos de la base de
+            données.
+          </li>
+          <li>Créer le compte administrateur principal.</li>
+          <li>
+            <strong>Q4 :</strong> Si l'installation échoue avec une <strong>"Erreur 500"</strong>, quel
+            fichier devez-vous consulter en priorité sur le serveur pour
+            comprendre l'erreur ?
+          </li>
+        </ol>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Débugging d'une Erreur 500
+          </button>
+          <div class="code-content">
+            <p>
+              Une Erreur 500 côté PHP est généralement causée par des erreurs de
+              syntaxe dans <em>.htaccess</em> ou un problème de droits/version PHP. Le
+              fichier à consulter en priorité est le **fichier de logs**
+              d'erreurs du serveur Web (souvent appelé <em>error.log</em> ou
+              <em>logs/apache_error.log</em> si vous utilisez Apache).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page_1.html">← Partie précédente (Prérequis)</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page_3.html"
+            >→ Partie suivante (Administration et Gestion des droits)</a
+          >
+        </div>
+      </div>
+
+      <footer>
+      <p style="text-align: center; font-size: 0.9em; color: #666">
+        © 2025 - BUT MMI Béziers - MAURIN N.
+        <br />R3.14 Déploiement de services
+      </p>
+    <script src="script.js"></script>
+  </body>
+</html>

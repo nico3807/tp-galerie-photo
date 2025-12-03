@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP Lychee - 3. Administration et Gestion des droits</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>3. 👥 Administration et Gestion des droits</h1>
+        <p>
+          Le client a besoin de zones distinctes : publique et privée. Cette
+          section couvre la configuration interne de Lychee pour répondre à ce
+          cahier des charges.
+        </p>
+      </header>
+
+      <hr />
+
+      <section id="general-config">
+        <h2>3.1 Configuration générale et structure des albums</h2>
+        <ol>
+          <li>
+            Dans les paramètres (Settings), modifiez le titre du site, la langue
+            par défaut et définissez le tri des photos par
+            <strong>"Date de prise de vue" décroissante</strong>.
+          </li>
+          <li>
+            Créez deux albums : "Portfolio Public" et "Shooting Mariage - Client
+            X".
+          </li>
+        </ol>
+      </section>
+
+      <hr />
+
+      <section id="permissions-config">
+        <h2>3.2 Gestion des permissions (Public vs Privé)</h2>
+        <p>
+          <strong>Tâches :</strong> Appliquez les règles de sécurité et de
+          partage nécessaires pour répondre aux besoins du client.
+        </p>
+        <ol start="3">
+          <li>
+            Rendre l'album <strong>"Portfolio Public"</strong> visible par tout
+            le monde, sans mot de passe.
+          </li>
+          <li>
+            Configurer l'album <strong>"Shooting Mariage"</strong> pour qu'il
+            soit privé mais accessible via un lien caché protégé par un mot de
+            passe complexe.
+          </li>
+          <li>
+            Activer l'option de <strong>téléchargement</strong> pour l'album
+            <strong>privé</strong>, mais la désactiver pour l'album
+            <strong>public</strong>.
+          </li>
+        </ol>
+      </section>
+
+      <hr />
+
+      <section id="questions-logic">
+        <h2>3.3 Questions de Logique Applicative</h2>
+        <ol start="6">
+          <li>
+            <strong>Q5 :</strong> Expliquer la différence entre un album
+            <strong>"Privé"</strong> et un album **"Public mais non listé"**.
+          </li>
+          <li>
+            <strong>Q6 :</strong> Dans quel cas d'usage professionnel
+            utiliseriez-vous la fonctionnalité **"Smart Albums"** (Albums
+            intelligents) ?
+          </li>
+        </ol>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Logique des droits d'accès (Q5)
+          </button>
+          <div class="code-content">
+            <p>
+              <strong>Privé :</strong> Seul le propriétaire (admin) peut y
+              accéder en étant connecté, ou si un mot de passe est partagé. Il
+              n'est jamais visible.
+            </p>
+            <p>
+              <strong>Public mais non listé :</strong> L'album est accessible
+              via son URL directe (il est public) mais il n'apparaît pas dans la
+              liste des albums sur la page d'accueil de la galerie (il est caché
+              aux yeux des visiteurs non informés).
+            </p>
+          </div>
+        </div>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Utilité des Smart Albums (Q6)
+          </button>
+          <div class="code-content">
+            <p>
+              Les Smart Albums (ou Albums intelligents) regroupent les photos
+              automatiquement selon un critère spécifique (ex: toutes les photos
+              prises en 2024, toutes les vidéos, ou les photos marquées comme
+              "Favoris").
+            </p>
+            <p>
+              <strong>Réflexion :</strong> Imaginez un photographe qui veut
+              rapidement créer un portfolio temporaire basé sur ses "coups de
+              cœur" sans déplacer les fichiers sources.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page_2.html">← Partie précédente (Configuration Serveur)</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page_4.html"
+            >→ Partie suivante (Optimisation et Tests de performance)</a
+          >
+        </div>
+      </div>
+
+      <footer>
+      <p style="text-align: center; font-size: 0.9em; color: #666">
+        © 2025 - BUT MMI Béziers - MAURIN N.
+        <br />R3.14 Déploiement de services
+      </p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

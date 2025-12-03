@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP Lychee - 4. Optimisation et Tests de performance</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>4. ⚡ Optimisation et Tests de performance</h1>
+        <p>
+          Un service déployé doit être performant. Vous allez tester la charge
+          du serveur et analyser les fichiers générés par l'application.
+        </p>
+      </header>
+
+      <hr />
+
+      <section id="media-import">
+        <h2>4.1 Import de médias et analyse des fichiers générés</h2>
+        <ol>
+          <li>
+            Préparez 5 photos haute définition (3-5 Mo) et 5 photos optimisées
+            web (moins de 300 Ko). Importez-les.
+          </li>
+          <li>
+            Observez le temps de traitement serveur (génération des miniatures).
+          </li>
+          <li>
+            <strong>Analyse des fichiers générés :</strong> Connectez-vous via
+            FTP. Allez dans le dossier <em>public/uploads/</em>.
+          </li>
+          <li>
+            <strong>Q7 :</strong> Lychee génère-t-il automatiquement des
+            versions <strong><em>webp</em></strong> ? Vérifiez dans le dossier
+            <em>uploads</em>.
+          </li>
+        </ol>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Rôles des dossiers de miniatures (Q7)
+          </button>
+          <div class="code-content">
+            <p>
+              Observez comment Lychee stocke les fichiers dans les sous-dossiers
+              : <em>big</em>, <em>medium</em>, <em>small</em>, <em>thumb</em>.
+              L'objectif de ces dossiers est de servir la version la plus petite
+              possible à l'utilisateur pour accélérer le chargement.
+            </p>
+            <p>
+              <strong>Vérification WebP :</strong> Lychee utilise souvent des
+              versions JPEG. La génération <em>webp</em> nécessite un support
+              spécifique qui n'est pas toujours activé par défaut. Vérifiez
+              l'extension des fichiers générés dans le dossier <em>uploads</em>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="performance-audit">
+        <h2>4.2 Audit de performance (F12)</h2>
+        <ol start="5">
+          <li>
+            Utilisez l'inspecteur réseau de votre navigateur (<strong
+              >F12 > Réseau</strong
+            >). Chargez la galerie.
+          </li>
+          <li>
+            <strong>Q8 :</strong> Quel est le poids total de la page d'accueil
+            avec vos 10 photos ? Le temps de chargement est-il acceptable (<em
+              >&lt; 2 sec</em
+            >) ?
+          </li>
+        </ol>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Interprétation des résultats F12 (Q8)
+          </button>
+          <div class="code-content">
+            <p>
+              <strong>Poids Total :</strong> La valeur "Transfer size" ou
+              "Taille transférée" en bas du panneau réseau vous donne le poids
+              total téléchargé.
+            </p>
+            <p>
+              <strong>Temps de chargement :</strong> La valeur "Finish" ou
+              "Terminé" vous donne le temps d'achèvement. Un bon temps de
+              chargement pour un site moderne sur connexion rapide est souvent
+              inférieur à 2 secondes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="deliverables">
+        <h2>4.3 Livrables attendus</h2>
+        <p>
+          Déposez sur <strong>Moodle</strong> un fichier PDF nommé
+          <em>NOM_Prenom_TP_Lychee.pdf</em> contenant :
+        </p>
+        <ul>
+          <li>L'URL de votre galerie installée.</li>
+          <li>
+            Les identifiants (login/pass) d'un utilisateur "invité" ou admin.
+          </li>
+          <li>Les réponses aux questions <strong>Q1 à Q8</strong>.</li>
+          <li>
+            Une capture d'écran de votre configuration FTP montrant les droits
+            modifiés.
+          </li>
+          <li>
+            Une capture d'écran des paramètres de partage de l'album privé.
+          </li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page_3.html">← Partie précédente (Gestion des droits)</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="index.html">↑ Retour au Menu du TP</a>
+        </div>
+      </div>
+
+      <footer>
+      <p style="text-align: center; font-size: 0.9em; color: #666">
+        © 2025 - BUT MMI Béziers - MAURIN N.
+        <br />R3.14 Déploiement de services
+      </p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
